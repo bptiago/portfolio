@@ -27,6 +27,7 @@ export default function ColoredTabs({ labels }: TabsProps) {
               value={i.toString()}
               label={label}
               sx={{ textTransform: "lowercase" }}
+              href={`#${label}`}
             />
           );
         })}

@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   margin: 0;
   box-sizing: border-box;
@@ -13,7 +17,11 @@
 }
 
 .secondary-color {
-  color: #80879e;
+  color: #474747;
+}
+
+.tertiary-color {
+  color: #7b7b7d;
 }
 
 .main-color {
