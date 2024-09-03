@@ -14,7 +14,7 @@ export default function CodeBlock() {
 
   const custom = {
     padding: "1.5rem",
-    borderRadius: "30px",
+    borderRadius: "10px",
   };
 
   return (

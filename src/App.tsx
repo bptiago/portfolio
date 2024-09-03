@@ -1,10 +1,33 @@
-import { Link } from "@mui/material";
+import { Button, Link } from "@mui/material";
 import "./App.css";
 import CodeBlock from "./components/CodeBlock";
 import Navbar from "./components/Navbar";
 import Card from "./components/Card";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { RepoData } from "./models/RepoData";
 
 function App() {
+  const hyperlinks = [
+    "bptiago123@gmail.com",
+    "github.com/bptiago",
+    "linkedin.com/in/bptiago/",
+  ];
+  const [repos, setRepos] = useState<RepoData[]>([]);
+  const [cardsCounter, setCounter] = useState(3);
+  const [loadMoreCardsButton, setButton] = useState(true);
+
+  function loadMoreCards() {
+    if (cardsCounter >= repos.length - 1) setButton(false);
+    else setCounter(cardsCounter + 3);
+  }
+
+  useEffect(() => {
+    axios
+      .get("https://api.github.com/users/bptiago/repos")
+      .then((res) => setRepos(res.data));
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -25,46 +48,56 @@ function App() {
           <div className="shadow-[0_0px_20px_0px_rgba(0,0,0,0.1)] rounded-xl">
             <CodeBlock />
           </div>
-          <div className="text-xl flex flex-col gap-y-4">
+          <div className="text-xl flex flex-col gap-y-2">
             <h2 className="highlight-color uppercase tracking-wider hover:tracking-widest transition-all size-fit">
               Fale comigo
             </h2>
-            <Link
-              href="#"
-              underline="hover"
-              color="textPrimary"
-              className="hover:tracking-wide transition-all"
-            >
-              bptiago123@gmail.com
-            </Link>
-            <Link
-              href="https://github.com/bptiago"
-              underline="hover"
-              color="textPrimary"
-              className="hover:tracking-wide transition-all"
-            >
-              github.com/bptiago
-            </Link>
-            <Link
-              href="https://www.linkedin.com/in/bptiago/"
-              underline="hover"
-              color="textPrimary"
-              className="hover:tracking-wide transition-all"
-            >
-              linkedin.com/in/bptiago/
-            </Link>
+            {hyperlinks.map((link, i) => {
+              return (
+                <Link
+                  key={i}
+                  href={link.includes("@") ? "#" : `https://www.${link}`}
+                  underline="hover"
+                  color="textPrimary"
+                  className="hover:tracking-wide transition-all"
+                >
+                  {link}
+                </Link>
+              );
+            })}
           </div>
         </section>
-        <section id="projetos">
-          <h1 className="lowercase text-center secondary-color font-semibold text-3xl mb-3">
-            <span className="tertiary-color text-3xl">/</span>projetos
+        <section id="projetos" className="w-3/5">
+          <h1 className="lowercase text-center  font-semibold text-3xl mb-3">
+            <span className="highlight-color text-3xl">/</span>projetos
           </h1>
           <p className="text-center tertiary-color text-lg font-thin">
             Algumas coisas que construí no passado...
           </p>
-          <div className="grid grid-cols-auto mt-16">
-            <Card />
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-16 gap-6">
+            {repos.map((repo, i) => {
+              if (i < cardsCounter)
+                return (
+                  <Card
+                    description={repo.description}
+                    title={repo.name}
+                    url={repo.html_url}
+                    key={i}
+                  />
+                );
+            })}
           </div>
+          {loadMoreCardsButton ? (
+            <Button
+              variant="outlined"
+              onClick={loadMoreCards}
+              sx={{ margin: "auto", display: "block", marginTop: "2rem" }}
+            >
+              carregar mais
+            </Button>
+          ) : (
+            ""
+          )}
         </section>
       </main>
     </>

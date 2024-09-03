@@ -1,9 +1,16 @@
 import { Link } from "@mui/material";
+import { ComponentPropsWithoutRef } from "react";
 
-export default function Card() {
+type CardProps = {
+  title: string;
+  description?: string;
+  url: string;
+} & ComponentPropsWithoutRef<"div">;
+
+export default function Card({ title, description, url }: CardProps) {
   return (
     <div
-      className="max-w-80 rounded hover:shadow-xl"
+      className="w-full min-w-54 rounded hover:shadow-[0_0px_20px_0px_rgba(25,118,210,0.25)] border hover:cursor-pointer"
       style={{ transition: "all", transitionDuration: "0.3s" }}
     >
       <div
@@ -12,17 +19,14 @@ export default function Card() {
           background: "#F9F8FD",
         }}
       >
-        <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt at
-          magnam volup
-        </div>
+        <div className="text-center">{description}</div>
       </div>
-      <div className="p-6 rounded-b" style={{ background: "#1976D2" }}>
-        <h1 className="text-white w-fit font-semibold text-lg">titulo</h1>
+      <div className="p-6 border-t" style={{ background: "#ffffff" }}>
+        <h1 className="highlight-color w-fit font-semibold text-lg">{title}</h1>
         <Link
-          href="#"
+          href={url}
           underline="hover"
-          sx={{ color: "white" }}
+          sx={{ color: "black" }}
           className="hover:tracking-wide transition-all"
         >
           github.com

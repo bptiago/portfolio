@@ -24,6 +24,7 @@ export default function ColoredTabs({ labels }: TabsProps) {
         {labels.map((label, i) => {
           return (
             <Tab
+              key={i}
               value={i.toString()}
               label={label}
               sx={{ textTransform: "lowercase" }}
