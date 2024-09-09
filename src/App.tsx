@@ -44,12 +44,12 @@ function App() {
             Gosto de desafios e sou motivado pela minha curiosidade.
           </p>
         </section>
-        <section className="grid grid-cols-2 gap-x-20" id="contato">
-          <div className="shadow-[0_0px_20px_0px_rgba(0,0,0,0.1)] rounded-xl">
+        <section className="contact-layout" id="contato">
+          <div className="contact-div rounded-xl">
             <CodeBlock />
           </div>
-          <div className="text-xl flex flex-col gap-y-2">
-            <h2 className="highlight-color uppercase tracking-wider hover:tracking-widest transition-all size-fit">
+          <div className="w-1/3 text-xl flex flex-col gap-y-2 contact-text">
+            <h2 className="w-max highlight-color uppercase tracking-wider hover:tracking-widest transition-all size-fit">
               Fale comigo
             </h2>
             {hyperlinks.map((link, i) => {
@@ -67,7 +67,7 @@ function App() {
             })}
           </div>
         </section>
-        <section id="projetos" className="w-3/5">
+        <section id="projetos" className="w-4/5 mx-auto">
           <h1 className="lowercase text-center  font-semibold text-3xl mb-3">
             <span className="highlight-color text-3xl">/</span>projetos
           </h1>

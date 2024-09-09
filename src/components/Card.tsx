@@ -1,5 +1,6 @@
 import { Link } from "@mui/material";
 import { ComponentPropsWithoutRef } from "react";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 type CardProps = {
   title: string;
@@ -14,15 +15,17 @@ export default function Card({ title, description, url }: CardProps) {
       style={{ transition: "all", transitionDuration: "0.3s" }}
     >
       <div
-        className="h-60 flex items-center justify-center p-4"
+        className="h-52 flex items-center justify-center p-4"
         style={{
           background: "#F9F8FD",
         }}
       >
-        <div className="text-center">{description}</div>
+        <div className="text-center text-sm tertiary-color">
+          {description ? description : <GitHubIcon />}
+        </div>
       </div>
       <div className="p-6 border-t" style={{ background: "#ffffff" }}>
-        <h1 className="highlight-color w-fit font-semibold text-lg">{title}</h1>
+        <h1 className="highlight-color w-fit font-semibold text-md">{title}</h1>
         <Link
           href={url}
           underline="hover"
