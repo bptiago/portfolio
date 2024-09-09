@@ -36,8 +36,10 @@ function App() {
           <h1 className="text-xl font-bold highlight-color uppercase">
             Olá, meu nome é Tiago
           </h1>
-          <h1 className="text-8xl font-semibold mt-1">Este é meu portfolio.</h1>
-          <p className="text-2xl font-light mt-10">
+          <h1 className="text-5xl sm:text-8xl font-semibold mt-1">
+            Este é meu portfolio.
+          </h1>
+          <p className="text-xl sm:text-2xl font-light mt-8">
             Sou estudante de Sistemas de Informação na PUCPR e busco construir
             aplicações interativas e inovadoras.
             <br></br>
