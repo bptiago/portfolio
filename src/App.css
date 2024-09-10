@@ -15,7 +15,7 @@
 
 .contact-div {
   width: 50%;
-  box-shadow: 0 0px 20px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0px 20px 0px rgba(0, 0, 0, 0.2);
 }
 
 @media screen and (max-width: 860px) {

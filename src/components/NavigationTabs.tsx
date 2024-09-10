@@ -5,7 +5,7 @@ type TabsProps = {
   labels: String[];
 };
 
-export default function ColoredTabs({ labels }: TabsProps) {
+export default function NavigationTabs({ labels }: TabsProps) {
   const [value, setValue] = React.useState("0");
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {

@@ -8,7 +8,7 @@ type CardProps = {
   url: string;
 } & ComponentPropsWithoutRef<"div">;
 
-export default function Card({ title, description, url }: CardProps) {
+export default function RepositoryCard({ title, description, url }: CardProps) {
   return (
     <div
       className="w-full min-w-54 rounded hover:shadow-[0_0px_20px_0px_rgba(25,118,210,0.25)] border hover:cursor-pointer"

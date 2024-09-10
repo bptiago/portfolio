@@ -1,5 +1,5 @@
 import FingerprintIcon from "@mui/icons-material/Fingerprint";
-import ColoredTabs from "./ColoredTabs";
+import NavigationTabs from "./NavigationTabs";
 
 export default function Navbar() {
   return (
@@ -13,7 +13,9 @@ export default function Navbar() {
         </a>
 
         <div>
-          <ColoredTabs labels={["home", "contato", "projetos"]} />
+          <NavigationTabs
+            labels={["home", "contato", "atividade", "projetos"]}
+          />
         </div>
       </div>
     </header>

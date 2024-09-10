@@ -2,10 +2,11 @@ import { Button, Link } from "@mui/material";
 import "./App.css";
 import CodeBlock from "./components/CodeBlock";
 import Navbar from "./components/Navbar";
-import Card from "./components/Card";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { RepoData } from "./models/RepoData";
+import { RepositoryData } from "./models/RepositoryData";
+import RepositoryCard from "./components/RepositoryCard";
+import ActivityCards from "./components/ActivityCards";
 
 function App() {
   const hyperlinks = [
@@ -13,7 +14,7 @@ function App() {
     "github.com/bptiago",
     "linkedin.com/in/bptiago/",
   ];
-  const [repos, setRepos] = useState<RepoData[]>([]);
+  const [repos, setRepos] = useState<RepositoryData[]>([]);
   const [cardsCounter, setCounter] = useState(3);
   const [loadMoreCardsButton, setButton] = useState(true);
 
@@ -41,11 +42,12 @@ function App() {
           </h1>
           <p className="text-xl sm:text-2xl font-light mt-8">
             Sou estudante de Sistemas de Informação na PUCPR e busco construir
-            aplicações interativas e inovadoras.
+            aplicações interativas e eficientes.
             <br></br>
             Gosto de desafios e sou motivado pela minha curiosidade.
           </p>
         </section>
+
         <section className="contact-layout" id="contato">
           <div className="contact-div rounded-xl">
             <CodeBlock />
@@ -69,6 +71,17 @@ function App() {
             })}
           </div>
         </section>
+
+        <section id="atividade">
+          <h1 className="lowercase text-center  font-semibold text-3xl mb-3">
+            <span className="highlight-color text-3xl">/</span>atividade
+          </h1>
+          <p className="text-center tertiary-color text-lg font-thin">
+            Algumas experiências que tive...
+          </p>
+          <ActivityCards />
+        </section>
+
         <section id="projetos" className="w-4/5 mx-auto">
           <h1 className="lowercase text-center  font-semibold text-3xl mb-3">
             <span className="highlight-color text-3xl">/</span>projetos
@@ -80,7 +93,7 @@ function App() {
             {repos.map((repo, i) => {
               if (i < cardsCounter)
                 return (
-                  <Card
+                  <RepositoryCard
                     description={repo.description}
                     title={repo.name}
                     url={repo.html_url}
