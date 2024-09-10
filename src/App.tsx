@@ -7,6 +7,7 @@ import axios from "axios";
 import { RepositoryData } from "./models/RepositoryData";
 import RepositoryCard from "./components/RepositoryCard";
 import ActivityCards from "./components/ActivityCards";
+import Footer from "./components/Footer";
 
 function App() {
   const hyperlinks = [
@@ -115,6 +116,8 @@ function App() {
           )}
         </section>
       </main>
+
+      <Footer></Footer>
     </>
   );
 }
