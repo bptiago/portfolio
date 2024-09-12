@@ -44,7 +44,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div>
       <Navbar />
       <main id="layout" className="gap-24">
         <section id="home">
@@ -131,7 +131,7 @@ function App() {
       </main>
 
       <Footer></Footer>
-    </>
+    </div>
   );
 }
 
