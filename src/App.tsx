@@ -20,8 +20,15 @@ function App() {
   const [loadMoreCardsButton, setButton] = useState(true);
 
   function loadMoreCards() {
-    if (cardsCounter >= repos.length - 1) setButton(false);
-    else setCounter(cardsCounter + 3);
+    setCounter((prevCounter) => {
+      const newCounter = prevCounter + 3;
+
+      if (newCounter >= repos.length) {
+        setButton(false);
+      }
+
+      return newCounter;
+    });
   }
 
   useEffect(() => {
