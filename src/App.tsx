@@ -26,8 +26,14 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("https://api.github.com/users/bptiago/repos")
-      .then((res) => setRepos(res.data));
+      .get("https://api.github.com/users/bptiago/starred?direction=asc")
+      .then((res) =>
+        setRepos(
+          res.data.filter(
+            (repo: RepositoryData) => repo.owner.login == "bptiago"
+          )
+        )
+      );
   }, []);
 
   return (
