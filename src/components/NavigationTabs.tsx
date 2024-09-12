@@ -8,7 +8,7 @@ type TabsProps = {
 export default function NavigationTabs({ labels }: TabsProps) {
   const [value, setValue] = React.useState("0");
 
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+  const handleChange = (_event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
 
