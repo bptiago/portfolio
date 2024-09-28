@@ -97,35 +97,43 @@ function App() {
         </section>
 
         <section id="projetos" className="w-4/5 mx-auto">
-          <h1 className="lowercase text-center  font-semibold text-3xl mb-3">
+          <h1 className="lowercase text-center font-semibold text-3xl mb-3">
             <span className="highlight-color text-3xl">/</span>projetos
           </h1>
           <p className="text-center tertiary-color text-lg font-thin">
             Algumas coisas que construí no passado...
           </p>
-          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-16 gap-6">
-            {repos.map((repo, i) => {
-              if (i < cardsCounter)
-                return (
-                  <RepositoryCard
-                    description={repo.description}
-                    title={repo.name}
-                    url={repo.html_url}
-                    key={i}
-                  />
-                );
-            })}
-          </div>
-          {loadMoreCardsButton ? (
-            <Button
-              variant="outlined"
-              onClick={loadMoreCards}
-              sx={{ margin: "auto", display: "block", marginTop: "2rem" }}
-            >
-              carregar mais
-            </Button>
+          {repos.length > 0 ? (
+            <>
+              <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-16 gap-6">
+                {repos.map((repo, i) => {
+                  if (i < cardsCounter)
+                    return (
+                      <RepositoryCard
+                        description={repo.description}
+                        title={repo.name}
+                        url={repo.html_url}
+                        key={i}
+                      />
+                    );
+                })}
+              </div>
+              {loadMoreCardsButton ? (
+                <Button
+                  variant="outlined"
+                  onClick={loadMoreCards}
+                  sx={{ margin: "auto", display: "block", marginTop: "2rem" }}
+                >
+                  carregar mais
+                </Button>
+              ) : (
+                ""
+              )}
+            </>
           ) : (
-            ""
+            <div className="text-center tertiary-color text-lg font-thin mt-5">
+              Algo deu errado... Favor acessar GitHub manualmente.
+            </div>
           )}
         </section>
       </main>
